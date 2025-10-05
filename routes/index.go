@@ -5,7 +5,7 @@ import "github.com/gorilla/mux"
 func RouteIndex(r *mux.Router) {
 
 	api := r.PathPrefix("/api").Subrouter()
-
+	UserRoutes(api)
 	AuthRoutes(api)
 	RegisterRoutes(api)
 	AuthorRoutes(api)

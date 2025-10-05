@@ -2,6 +2,7 @@ package routes
 
 import (
 	"go-api-native/controllers/authorcontroller"
+	"go-api-native/middleware"
 
 	"github.com/gorilla/mux"
 )
@@ -9,6 +10,7 @@ import (
 func AuthorRoutes(r *mux.Router) {
 
 	router := r.PathPrefix("/authors").Subrouter()
+	router.Use(middleware.Auth)
 
 	router.HandleFunc("", authorcontroller.Index).Methods("GET")
 	router.HandleFunc("", authorcontroller.Create).Methods("POST")

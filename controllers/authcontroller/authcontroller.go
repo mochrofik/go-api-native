@@ -82,6 +82,26 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	helper.Response(w, 200, "login successfully", nil)
+	token, err := helper.CreateToken(user)
+
+	if err != nil {
+		helper.Response(w, 500, err.Error(), nil)
+		return
+	}
+
+	helper.Response(w, 200, "login successfully", token)
+
+}
+
+func Me(w http.ResponseWriter, r *http.Request) {
+
+	user := r.Context().Value("userinfo").(*helper.MyCustomClaims)
+
+	userResponse := models.MyProfile{
+		ID:       user.ID,
+		Username: user.Username,
+		Email:    user.Email,
+	}
+	helper.Response(w, 200, "My Profile", userResponse)
 
 }

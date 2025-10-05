@@ -24,3 +24,9 @@ type Login struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
 }
+
+type MyProfile struct {
+	ID       int    `json:"id"`
+	Username string `json:"username"`
+	Email    string `json:"email"`
+}
