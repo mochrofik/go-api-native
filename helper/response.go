@@ -25,7 +25,7 @@ func Response(w http.ResponseWriter, code int, message string, payload interface
 
 	status := "success"
 
-	if code > 400 {
+	if code >= 400 {
 		status = "failed"
 	}
 
