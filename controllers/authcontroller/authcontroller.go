@@ -67,12 +67,12 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 	var user *models.User
 
-	if login.Username == "" || login.Password == "" {
+	if login.Email == "" || login.Password == "" {
 		helper.Response(w, 400, "Input data correctly", nil)
 		return
 	}
 
-	if err := config.DB.First(&user, "username = ?", login.Username).Error; err != nil {
+	if err := config.DB.First(&user, "email = ?", login.Email).Error; err != nil {
 		helper.Response(w, 404, "wrong email or password", nil)
 		return
 	}

@@ -15,7 +15,7 @@ type Book struct {
 
 type BookResponse struct {
 	ID          uint               `json:"id"`
-	Title       string             ` json:"title"`
+	Title       string             `json:"title"`
 	AuthorID    uint               `gorm:"type:integer" json:"-"`
 	Author      AuthorBookResponse `gorm:"foreignKey:AuthorID" json:"author"`
 	Description string             `json:"description"`
